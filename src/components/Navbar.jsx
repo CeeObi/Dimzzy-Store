@@ -60,9 +60,9 @@ const Navbar = () => {
                     {/*Sun icon */}
                     <BsSunFill className='swap-on h-4 w-4' />
                     {/*Moon icon */}
-                    <BsMoonFill className='swap-off h-4 w-4'/>
-                    
+                    <BsMoonFill className='swap-off h-4 w-4'/>                    
                 </label>
+                
                 {/*CART ICON */}
                 <NavLink to='/cart' className='btn btn-ghost ml-4 btn-circle btn-md'>
                     <div className="indicator">

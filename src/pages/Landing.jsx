@@ -1,4 +1,4 @@
-import { Hero } from "../components";
+import { FeaturedProducts, Hero } from "../components";
 import { customFetch } from "../utils";
 
 
@@ -11,9 +11,11 @@ const Loader = async() =>{
 }
 
 
+
 const Landing = () =>{
     return <>
         <Hero/>
+        <FeaturedProducts />
     </>
 }
 

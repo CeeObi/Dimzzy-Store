@@ -13,7 +13,15 @@ const formatPrice = (price) => {
     return dollarsAmount;
 }
 
+const generateQuantityOptions = (numQtyAvailable) => {
+    return Array.from( {length:numQtyAvailable}, ( _, index) => {
+            const quantity = index + 1
+            return <option key={quantity} value={quantity}>{quantity}</option>
+        }
+    )
+}
 
 
 
-export {customFetch, formatPrice};
+
+export {customFetch, formatPrice, generateQuantityOptions};

@@ -3,17 +3,18 @@ import { customFetch } from "../utils";
 
 const url = "/products/";
 
-const Loader = async () =>{
-    const response = await customFetch(url)
+const Loader = async ({request}) =>{
+    const params = Object.fromEntries( [...new URL(request.url).searchParams.entries()]); // const search = params.get("search"). This way to get it one by one   
+    console.log(params)
+    const response = await customFetch(url,{params})
     const products = response.data.data
-    const meta = response.data.meta
-    console.log(response)
-    return {products, meta}
+    const meta = response.data.meta    
+    return {products, meta, params}
 }
 
 
 
-const Products = () =>{
+const Products = () =>{    
     return <>   
     <Filters />
     <ProductsContainer />

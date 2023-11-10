@@ -6,4 +6,4 @@ const PaginationContainer = () => {
   )
 }
 
-export default PaginationContainer
+export default PaginationContainer;

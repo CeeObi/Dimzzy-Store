@@ -21,7 +21,7 @@ const SingleProduct = () => {
     const [quantity, setQuantity] = useState(1)
 
     const handleQuantity = (event) => {
-        getQuantity = parseInt(event.target.value)
+        const getQuantity = parseInt(event.target.value)
         setQuantity(getQuantity)
     }
 
@@ -33,6 +33,7 @@ const SingleProduct = () => {
         price,
         company,
         productColor,
+        quantity,
     }
 
     const dispatch = useDispatch();

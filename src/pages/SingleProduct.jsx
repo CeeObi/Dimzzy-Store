@@ -2,7 +2,7 @@ import { customFetch, formatPrice, generateQuantityOptions } from "../utils";
 import { Link, useLoaderData } from 'react-router-dom'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItems } from "../features/cart/cartSlice";
+import { addItems,clearCart } from "../features/cart/cartSlice";
 
 
 
@@ -39,7 +39,11 @@ const SingleProduct = () => {
     const dispatch = useDispatch();
 
     const addToCart = () => {
-        dispatch(addItems({product:cartProduct}))
+        dispatch(addItems({product: cartProduct}))
+    }
+
+    const clearTheCart = () => {
+        dispatch(clearCart())
     }
 
 
@@ -85,6 +89,7 @@ const SingleProduct = () => {
                 {/* CART BTN */}
                 <div className="mt-10">
                     <button className="btn btn-secondary btn-md" onClick={addToCart}> Add to cart</button>
+                    <button className="btn btn-secondary btn-md" onClick={clearTheCart}> Clear cart</button>
                 </div>
 
             </div>

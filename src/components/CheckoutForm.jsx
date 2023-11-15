@@ -28,6 +28,9 @@ const Action = (store) => async ({request}) => {
         console.log(error)
         const errorMessage = error?.response?.data?.error?.message || "There was an error placing your order!"
         toast.error(errorMessage);
+        if (error.response.status===401){
+            return redirect("/login")
+        }
         return null;
     }
 }

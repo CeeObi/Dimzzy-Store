@@ -3,7 +3,7 @@ import {FormInput, SubmitBtn} from "../components"
 import { customFetch } from "../utils";
 import { toast } from "react-toastify";
 
-const action = async({request}) => {
+const Action = async({request}) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     
@@ -18,17 +18,15 @@ const action = async({request}) => {
     }
 }
 
-const Register = () =>{
-    
+const Register = () =>{    
     return <section className="h-screen grid place-items-center">
         <Form method="POST" className="card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4">
             <h4 className="text-center font-bold text-3xl">Register</h4>
             <div>
-                <FormInput type="text" name="username" label="username" defaultValue="Dims1 obi1" />
-                <FormInput type="email" name="email" label="email" defaultValue="dims1@gmail.com"/>
-                <FormInput type="password" name="password" label="password" defaultValue="passw0rd"/>
-            </div>
-            
+                <FormInput type="text" name="username" label="username" />
+                <FormInput type="email" name="email" label="email" />
+                <FormInput type="password" name="password" label="password" />
+            </div>            
             <div className="mt-4">
                 <SubmitBtn text="Register"/>            
             </div>
@@ -42,4 +40,4 @@ const Register = () =>{
 }
 
 export default Register;
-export {action};
+export {Action};

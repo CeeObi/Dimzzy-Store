@@ -24,11 +24,10 @@ const Action = (store) => async ({request}) => {
         store.dispatch(clearCart());
         toast.success("Order has been placed successfully!");
         return redirect("/orders");
-    } catch (error) {
-        console.log(error)
+    } catch (error) {       
         const errorMessage = error?.response?.data?.error?.message || "There was an error placing your order!"
         toast.error(errorMessage);
-        if (error.response.status===401){
+        if (error.response.status === 401 || 403){
             return redirect("/login")
         }
         return null;

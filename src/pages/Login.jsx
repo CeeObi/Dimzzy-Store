@@ -14,7 +14,6 @@ const Action = (store) =>  async({request}) => {
     
     try {
         const response = await customFetch.post("auth/local", data);
-        console.log(response)
         store.dispatch(loginUser(response.data))
         toast.success("Logged in successfully");
         return redirect("/");        

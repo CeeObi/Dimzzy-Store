@@ -14,7 +14,7 @@ const PaginationContainer = () => {
   const handlePageChange = (pageNumber) => {
     const searchParams = new URLSearchParams(search);//locates the all the parameters and
     searchParams.set('page',pageNumber);  // Basically adds 'page=pageNumber' to the existing query parameters.
-    navigateTo(`${pathname}?${searchParams.toString()}`)//basically navigate to the resultinh url
+    navigateTo(`${pathname}?${searchParams.toString()}`)//basically navigate to the resulting url
   }
 
   if (pageCount < 2) {

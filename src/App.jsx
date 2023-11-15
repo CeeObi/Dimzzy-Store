@@ -2,17 +2,19 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {About, Cart, Checkout, Error, HomeLayout, Landing, Login, Orders, Products, Register, SingleProduct} from "./pages";
 import { ErrorElement } from "./components";
 
+
 //loaders
 import { Loader as LandingLoader } from "./pages/Landing";
 import { Loader as SingleProductLoader } from "./pages/SingleProduct";
 import { Loader as ProductLoader } from "./pages/Products";
+import { Loader as CheckoutLoader } from "./pages/Checkout";
 
 //actions
 import { Action as registerAction } from "./pages/Register";
 import { Action as loginAction } from "./pages/Login";
+import { Action as checkoutAction} from "./components/CheckoutForm.jsx";
+
 import { store } from './store.js'
-
-
 
 
 
@@ -50,7 +52,9 @@ const router = createBrowserRouter([
     },
     {
       path:'/checkout',
-      element:<Checkout />
+      element:<Checkout />,
+      loader: CheckoutLoader(store),
+      action: checkoutAction(store),
     },
     {
       path:'/orders',
@@ -62,13 +66,13 @@ const router = createBrowserRouter([
     path:'/login',
     element: <Login />, 
     errorElement: <Error />,
-    action:loginAction(store),
+    action: loginAction(store),
   },
   { 
     path:'/register',
     element: <Register />, 
     errorElement: <Error />,
-    action:registerAction,
+    action: registerAction,
   },
 ])
 

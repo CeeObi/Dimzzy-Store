@@ -42,10 +42,6 @@ const SingleProduct = () => {
         dispatch(addItems({product: cartProduct}))
     }
 
-    const clearTheCart = () => {
-        dispatch(clearCart())
-    }
-
 
     return <section>
         <div className="text-md breadcrumbs">
@@ -89,7 +85,6 @@ const SingleProduct = () => {
                 {/* CART BTN */}
                 <div className="mt-10">
                     <button className="btn btn-secondary btn-md" onClick={addToCart}> Add to cart</button>
-                    <button className="btn btn-secondary btn-md" onClick={clearTheCart}> Clear cart</button>
                 </div>
 
             </div>

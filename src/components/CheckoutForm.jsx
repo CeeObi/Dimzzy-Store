@@ -7,7 +7,7 @@ import { clearCart } from '../features/cart/cartSlice';
 import { toast } from 'react-toastify';
 
 
-const Action = (store) => async ({request}) => {
+const Action = (store,queryClient) => async ({request}) => {
     const formData = await request.formData();
     const {name, address} = Object.fromEntries(formData);
     const user = store.getState().userState.user;
@@ -21,13 +21,14 @@ const Action = (store) => async ({request}) => {
                 Authorization: `Bearer ${user.token}`
             }
         })
+        queryClient.removeQueries(['orders'])
         store.dispatch(clearCart());
         toast.success("Order has been placed successfully!");
         return redirect("/orders");
     } catch (error) {       
         const errorMessage = error?.response?.data?.error?.message || "There was an error placing your order!"
         toast.error(errorMessage);
-        if (error.response.status === 401 || 403){
+        if (error?.response?.status === 401 || 403){
             return redirect("/login")
         }
         return null;

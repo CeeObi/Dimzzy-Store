@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { customFetch } from "../utils";
 import { useLoaderData } from "react-router-dom";
-import { OrderList, PaginationContainer, SectionTitle } from "../components";
+import { OrderList, ComplexPaginationContainer, SectionTitle } from "../components";
 
 
 const Loader = (store) => async ({request}) => { 
@@ -37,7 +37,7 @@ const Orders = () =>{
     return  <>
         <SectionTitle text="Your orders" />
         <OrderList />
-        <PaginationContainer />
+        <ComplexPaginationContainer />
     </>
     
 }

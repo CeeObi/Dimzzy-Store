@@ -5,7 +5,7 @@ import hero3 from '../assets/hero3.webp'
 import hero4 from '../assets/hero4.webp'
 import { Link } from 'react-router-dom'
 
-const carouselImages = [hero1,hero2,hero3,hero4];
+const carouselImages = [hero3,hero4,hero2,hero1];
 
 
 const Hero = () => {

@@ -9,8 +9,8 @@ const links = [
     { id: 4, url: 'cart', text: 'cart' },
     { id: 5, url: 'checkout', text: 'checkout' },
     { id: 6, url: 'orders', text: 'orders' },
+    { id: 7, url: 'https://dimsblog.onrender.com', text: 'blog' },
   ];
-
 
 const NavLinks = () => {    
   const user = useSelector((state) => state.userState.user);
@@ -22,10 +22,14 @@ const NavLinks = () => {
                 <NavLink to={url} className="capitalize">
                     {text}
                 </NavLink>
-        </li>
-  }    
+        </li>  
+    }    
   )}
   </>
 }
+
+
+
+
 
 export default NavLinks

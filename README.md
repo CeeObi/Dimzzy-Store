@@ -1,18 +1,11 @@
 ## Useful Project Resources
-
-- [Complete Project](https://react-vite-comfy-store-v2.netlify.app/)
+- [Complete Project](https://dimzzy-store.onrender.com/)
 - [API DOCS](https://documenter.getpostman.com/view/18152321/2s9Xy5KpTi)
 
-## IMPORTANT !!!
 
-Try to work on one challenge at a time and observe my solution.
-This approach will make it easier later to identify any potential bugs.
 
-## Challenge (1) - Setup
-
+##(1) - Setup
 - create vite project with tailwind
-
-## Solution (1) - Setup Vite and Tailwind
 
 [Tailwind Docs](https://tailwindcss.com/docs/guides/vite)
 
@@ -87,16 +80,14 @@ export default App;
 
 - get project assets
 
-## Challenge (2) - Setup DaisyUI
 
+
+
+##(2) - Setup DaisyUI
 - [DaisyUI](https://daisyui.com/)
-
 - add and configure daisyui to our project
 - add TailwindCSS Typography plugin
 
-## Solution (2) - Setup DaisyUI
-
-[DaisyUI](https://daisyui.com/)
 
 ```sh
 npm i  -D daisyui@latest @tailwindcss/typography
@@ -117,8 +108,10 @@ npm i axios@1.4.0 dayjs@1.11.9 @reduxjs/toolkit@1.9.5 @tanstack/react-query@4.32
 
 ```
 
-## Challenge (3) - Create All Pages
 
+
+
+##(3) - Create All Pages
 - create pages directory
 - create all pages and export from index.js
 - About, Cart, Checkout, Error,
@@ -126,7 +119,6 @@ npm i axios@1.4.0 dayjs@1.11.9 @reduxjs/toolkit@1.9.5 @tanstack/react-query@4.32
   Products, Register, SingleProduct
 - import in app.jsx
 
-## Solution (3) - Create All Pages
 
 pages/About.jsx
 
@@ -171,8 +163,10 @@ import {
 } from './pages';
 ```
 
-## Challenge (4) - React Router
 
+
+
+##(4) - React Router
 - configure react router
 - setup initial route structure
   hint : look for nested UI (basically navbar)
@@ -201,84 +195,10 @@ import {
 5. Export App Component:
    - Export the `App` component as the default export of the module.
 
-## Solution (4) - React Router
 
-App.jsx
 
-```js
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-      },
-      {
-        path: 'products',
-        element: <Products />,
-      },
-      {
-        path: 'products/:id',
-        element: <SingleProduct />,
-      },
-      {
-        path: 'cart',
-        element: <Cart />,
-      },
-      { path: 'about', element: <About /> },
-      {
-        path: 'checkout',
-        element: <Checkout />,
-      },
-      {
-        path: 'orders',
-        element: <Orders />,
-      },
-    ],
-  },
-  {
-    path: '/login',
-    element: <Login />,
-    errorElement: <Error />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
-    errorElement: <Error />,
-  },
-]);
-
-const App = () => {
-  return <RouterProvider router={router} />;
-};
-export default App;
-```
-
-HomeLayout.jsx
-
-```js
-import { Outlet } from 'react-router-dom';
-
-const HomeLayout = () => {
-  return (
-    <>
-      <nav>
-        <span className='text-4xl text-primary'>Comfy</span>
-      </nav>
-      <Outlet />
-    </>
-  );
-};
-export default HomeLayout;
-```
-
-## Challenge (5) - Error Page
-
+##(5) - Error Page
 - complete error page
 - create two returns
 - first for 404 errors
@@ -312,46 +232,10 @@ export default HomeLayout;
 5. Export Error Component:
    - Export the `Error` component as the default export of the module.
 
-## Solution (5) - Error Page
 
-Error.jsx
 
-```js
-import { useRouteError, Link } from 'react-router-dom';
-const Error = () => {
-  const error = useRouteError();
-  console.log(error);
-  if (error.status === 404)
-    return (
-      <main className='grid min-h-[100vh] place-items-center px-8 '>
-        <div className='text-center'>
-          <p className='text-9xl font-semibold text-primary'>404</p>
-          <h1 className='mt-4 text-3xl font-bold tracking-tight sm:text-5xl'>
-            Page not found
-          </h1>
-          <p className='mt-6 text-lg leading-7 '>
-            Sorry, we couldn’t find the page you’re looking for.
-          </p>
-          <div className='mt-10 '>
-            <Link to='/' className='btn btn-secondary'>
-              Go back home
-            </Link>
-          </div>
-        </div>
-      </main>
-    );
 
-  return (
-    <main className='grid min-h-[100vh] place-items-center px-8 '>
-      <h4 className='text-center font-bold text-4xl'>there was an error... </h4>
-    </main>
-  );
-};
-export default Error;
-```
-
-## Challenge (6) - Input Field Component
-
+##(6) - Input Field Component
 - create components folder with index.js
 - in daisyui
 - find Text input component
@@ -385,37 +269,10 @@ export default Error;
 4. Export FormInput Component:
    - Export the `FormInput` component as the default export of the module.
 
-## Solution (6) - Input Field Component
 
-components/index.js
 
-```js
-export { default as FormInput } from './FormInput';
-```
 
-FormInput.jsx
-
-```js
-const FormInput = ({ label, name, type, defaultValue }) => {
-  return (
-    <div className='form-control '>
-      <label className='label'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <input
-        type={type}
-        name={name}
-        defaultValue={defaultValue}
-        className='input input-bordered '
-      />
-    </div>
-  );
-};
-export default FormInput;
-```
-
-## Challenge (7) - Login Page Structure
-
+##(7) - Login Page Structure
 - setup structure for login page (use complete project as reference)
 - check for loading state and disable submit button
 - setup submit button in a separate component
@@ -492,85 +349,11 @@ export default FormInput;
           - Class set to `'ml-2 link link-hover link-primary capitalize'`.
           - Text content set to `'register'`.
 
-## Solution (7) - Login Page Structure
 
-Login.jsx
 
-```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, Link } from 'react-router-dom';
 
-const Login = () => {
-  return (
-    <section className='h-screen grid place-items-center'>
-      <Form
-        method='post'
-        className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
-        <h4 className='text-center text-3xl font-bold'>Login</h4>
-        <FormInput
-          type='email'
-          label='email'
-          name='identifier'
-          defaultValue='test@test.com'
-        />
-        <FormInput
-          type='password'
-          label='password'
-          name='password'
-          defaultValue='secret'
-        />
-        <div className='mt-4'>
-          <SubmitBtn text='login' />
-        </div>
-        <button type='button' className='btn btn-secondary btn-block'>
-          guest user
-        </button>
-        <p className='text-center'>
-          Not a member yet?
-          <Link
-            to='/register'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
-            register
-          </Link>
-        </p>
-      </Form>
-    </section>
-  );
-};
-export default Login;
-```
 
-SubmitBtn.jsx
-
-```js
-import { useNavigation } from 'react-router-dom';
-const SubmitBtn = ({ text }) => {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
-  return (
-    <button
-      type='submit'
-      className='btn btn-primary btn-block'
-      disabled={isSubmitting}
-    >
-      {isSubmitting ? (
-        <>
-          <span className='loading loading-spinner'></span>
-          sending...
-        </>
-      ) : (
-        text || 'submit'
-      )}
-    </button>
-  );
-};
-export default SubmitBtn;
-```
-
-## Challenge (8) - Register Page Structure
-
+##(8) - Register Page Structure
 - setup structure for register page (use complete project as reference)
 
 ### Register.jsx
@@ -612,69 +395,19 @@ export default SubmitBtn;
           - Class set to `'ml-2 link link-hover link-primary capitalize'`.
           - Text content set to `'login'`.
 
-## Solution (8) - Register Page Structure
 
-```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, Link } from 'react-router-dom';
 
-const Register = () => {
-  return (
-    <section className='h-screen grid place-items-center'>
-      <Form
-        method='POST'
-        className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
-        <h4 className='text-center text-3xl font-bold'>Register</h4>
-        <FormInput type='text' label='username' name='username' />
-        <FormInput type='email' label='email' name='email' />
-        <FormInput type='password' label='password' name='password' />
-        <div className='mt-4'>
-          <SubmitBtn text='register' />
-        </div>
 
-        <p className='text-center'>
-          Already a member?
-          <Link
-            to='/login'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
-            login
-          </Link>
-        </p>
-      </Form>
-    </section>
-  );
-};
-export default Register;
-```
 
-## Challenge (9) - Custom Class
-
+##(9) - Custom Class
 - create custom class
 - align content
 - add to HomeLayout Outlet component
 
-## Solution (9) - Custom Class
 
-index.css
 
-```css
-@layer components {
-  .align-element {
-    @apply mx-auto max-w-6xl px-8;
-  }
-}
-```
 
-```js
-<section className='align-element py-20'>
-  <Outlet />
-</section>
-```
-
-## Challenge (10) - Header Component
-
+##(10) - Header Component
 - setup and render header component in HomeLayout
 - add two links - Login and Register
 
@@ -705,34 +438,10 @@ index.css
             - Class set to `'link link-hover text-xs sm:text-sm'`.
             - Text content set to `'Create an Account'`.
 
-## Solution (10) - Header Component
 
-```js
-import { Link } from 'react-router-dom';
 
-const Header = () => {
-  return (
-    <header className=' bg-neutral py-2 text-neutral-content '>
-      <div className='align-element flex justify-center sm:justify-end '>
-        {/* USER */}
-        {/* LINKS */}
-        <div className='flex gap-x-6 justify-center items-center'>
-          <Link to='/login' className='link link-hover text-xs sm:text-sm'>
-            Sign in / Guest
-          </Link>
-          <Link to='/register' className='link link-hover text-xs sm:text-sm'>
-            Create an Account
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-};
-export default Header;
-```
 
-## Challenge (11) - Navbar Structure
-
+##(11) - Navbar Structure
 - create components/Navbar.jsx
 - setup initial structure
 - use Daisy navbar component
@@ -783,62 +492,11 @@ export default Header;
 
             - Create a `span` element with classes `'badge badge-sm badge-primary indicator-item'` and text content `'8'`.
 
-## Solution (11) - Navbar Structure
 
-```js
-import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
-import { FaBarsStaggered } from 'react-icons/fa6';
-import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
-  return (
-    <nav className='bg-base-200'>
-      <div className='navbar align-element '>
-        <div className='navbar-start'>
-          {/* Title */}
-          <NavLink
-            to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center '
-          >
-            C
-          </NavLink>
-          {/* DROPDOWN */}
-          <div className='dropdown'>
-            <label tabIndex={0} className='btn btn-ghost lg:hidden'>
-              <FaBarsStaggered className='h-6 w-6' />
-            </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
-              nav links
-            </ul>
-          </div>
-        </div>
-        <div className='navbar-center hidden lg:flex'>
-          <ul className='menu menu-horizontal '>nav links</ul>
-        </div>
-        <div className='navbar-end'>
-          {/* THEME ICONS */}
-          {/* CART LINK*/}
-          <NavLink to='cart' className='btn btn-ghost btn-circle btn-md ml-4'>
-            <div className='indicator'>
-              <BsCart3 className='h-6 w-6' />
-              <span className='badge badge-sm badge-primary indicator-item'>
-                8
-              </span>
-            </div>
-          </NavLink>
-        </div>
-      </div>
-    </nav>
-  );
-};
-export default Navbar;
-```
 
-## Challenge (12) - NavLinks
 
+##(12) - NavLinks
 - create NavLinks component
 - setup an array of links
 - iterate over and setup return
@@ -869,92 +527,23 @@ export default Navbar;
 
           - Text content set to the `text`.
 
-## Solution (12) - NavLinks
 
-NavLinks.jsx
 
-```js
-const links = [
-  { id: 1, url: '/', text: 'home' },
-  { id: 2, url: 'about', text: 'about' },
-  { id: 3, url: 'products', text: 'products' },
-  { id: 4, url: 'cart', text: 'cart' },
-  { id: 5, url: 'checkout', text: 'checkout' },
-  { id: 6, url: 'orders', text: 'orders' },
-];
-import { NavLink } from 'react-router-dom';
 
-const NavLinks = () => {
-  return (
-    <>
-      {links.map((link) => {
-        const { id, url, text } = link;
-        return (
-          <li key={id}>
-            <NavLink className='capitalize' to={url}>
-              {text}
-            </NavLink>
-          </li>
-        );
-      })}
-    </>
-  );
-};
-export default NavLinks;
-```
-
-## Challenge (13) - Toggle Component
-
+##(13) - Toggle Component
 - add daisyui swap component
 
-## Solution (13) - Toggle Component
 
-```js
-import { useState } from 'react';
 
-const [theme, setTheme] = useState(false);
 
-const handleTheme = () => {
-  setTheme(!theme);
-};
-<div className='navbar-end'>
-  <label className='swap swap-rotate '>
-    {/* this hidden checkbox controls the state */}
-    <input type='checkbox' onChange={handleTheme} />
-
-    {/* sun icon */}
-    <BsSunFill className='swap-on h-4 w-4' />
-
-    {/* moon icon */}
-    <BsMoonFill className='swap-off h-4 w-4' />
-  </label>
-</div>;
-```
-
-## Challenge (14) - Set Themes
-
+##(14) - Set Themes
 - add few themes from daisyui
 - test in index.html
 
-## Solution (14) - Set Themes
 
-tailwind.config.cjs
 
-```js
-{
-...
-  daisyui: {
-    themes: ['winter', 'dracula'],
-  },
-}
-```
 
-```html
-<html lang="en" data-theme="winter"></html>
-```
-
-## Challenge (15) - Change Theme
-
+##(15) - Change Theme
 - change theme with toggle component
 
 ### Navbar.jsx
@@ -979,40 +568,11 @@ tailwind.config.cjs
   - Use the `useEffect` hook to apply the selected theme to the `document.documentElement` and store the theme value in `localStorage`.
   - ... (rest of the component implementation)
 
-## Solution (15) - Change Theme
 
-```js
-import { useEffect, useState } from 'react';
 
-const themes = {
-  winter: 'winter',
-  dracula: 'dracula',
-};
 
-const getThemeFromLocalStorage = () => {
-  return localStorage.getItem('theme') || themes.winter;
-};
 
-const Navbar = () => {
-  const [theme, setTheme] = useState(getThemeFromLocalStorage());
-
-  const handleTheme = () => {
-    const { winter, dracula } = themes;
-    const newTheme = theme === winter ? dracula : winter;
-    setTheme(newTheme);
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  ...
-};
-```
-
-## Challenge (16) - About Page
-
+## (16) - About Page
 - setup about page
 
 ### About.jsx
@@ -1027,38 +587,11 @@ const Navbar = () => {
             - Inside this `div`, a `div` with classes `stat-title`, `text-primary-content`, `text-4xl`, `font-bold`, and `tracking-widest`, containing the text "comfy".
       - A `p` element with classes `mt-6`, `text-lg`, `leading-8`, `max-w-2xl`, and `mx-auto`, containing sample Lorem ipsum text.
 
-## Solution (16) - About Page
 
-```js
-const About = () => {
-  return (
-    <>
-      <div className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center'>
-        <h1 className='text-4xl font-bold leading-none tracking-tight sm:text-6xl '>
-          We love
-        </h1>
-        <div className='stats bg-primary shadow'>
-          <div className='stat'>
-            <div className='stat-title text-primary-content text-4xl font-bold tracking-widest'>
-              comfy
-            </div>
-          </div>
-        </div>
-      </div>
-      <p className='mt-6 text-lg leading-8 max-w-2xl mx-auto'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic veniam
-        odit, officiis eos mollitia alias, doloremque, aspernatur ratione
-        asperiores voluptas labore minus dolores reprehenderit corporis quos.
-        Assumenda molestias harum dignissimos?
-      </p>
-    </>
-  );
-};
-export default About;
-```
 
-## Challenge (17) - Hero Component
 
+
+## (17) - Hero Component
 - setup hero component in landing page
 
 ### Hero.jsx
@@ -1081,59 +614,10 @@ export default About;
           - For each image, a `div` with class `carousel-item`.
             - Inside the `div`, an `img` element with attributes `src` set to the image path and classes `rounded-box`, `h-full`, `w-80`, and `object-cover`.
 
-## Challenge (17) - Hero Component
 
-Hero.jsx
 
-```js
-import { Link } from 'react-router-dom';
 
-import hero1 from '../assets/hero1.webp';
-import hero2 from '../assets/hero2.webp';
-import hero3 from '../assets/hero3.webp';
-import hero4 from '../assets/hero4.webp';
-
-const carouselImages = [hero1, hero2, hero3, hero4];
-const Hero = () => {
-  return (
-    <div className=' grid grid-cols-1 lg:grid-cols-2 gap-24 items-center'>
-      <div>
-        <h1 className='max-w-2xl text-4xl font-bold tracking-tight  sm:text-6xl '>
-          We’re changing the way people shop.
-        </h1>
-
-        <p className='mt-8 max-w-xl text-lg leading-8'>
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-          cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
-          aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-          qui lorem cupidatat commodo.
-        </p>
-        <div className='mt-10 '>
-          <Link to='products' className='btn btn-primary '>
-            Our Products
-          </Link>
-        </div>
-      </div>
-      <div className='hidden  h-[28rem] lg:carousel carousel-center   p-4 space-x-4 bg-neutral rounded-box'>
-        {carouselImages.map((image, index) => {
-          return (
-            <div key={image} className='carousel-item'>
-              <img
-                src={image}
-                className='rounded-box h-full w-80  object-cover'
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-export default Hero;
-```
-
-## Challenge (18) - Axios Custom Instance
-
+## (18) - Axios Custom Instance
 - explore api
 - [API DOCS](https://documenter.getpostman.com/view/18152321/2s9Xy5KpTi)
 - create utils/index.js
@@ -1141,20 +625,10 @@ export default Hero;
 - figure out the base url
 - setup thunder client (optional)
 
-## Challenge (18) - Axios Custom Instance
 
-```js
-import axios from 'axios';
 
-const productionUrl = 'https://strapi-store-server.onrender.com/api';
 
-export const customFetch = axios.create({
-  baseURL: productionUrl,
-});
-```
-
-## Challenge (19) - Landing Loader
-
+## (19) - Landing Loader
 - setup ErrorElement
 - add to Loading Page
 - setup a loader
@@ -1183,73 +657,10 @@ export const customFetch = axios.create({
 5. Export ErrorElement Component:
    - Export the `ErrorElement` component as the default export of the module.
 
-## Solution (19) - Landing Loader
 
-ErrorElement.jsx
 
-```js
-import { useRouteError } from 'react-router-dom';
-const ErrorElement = () => {
-  const error = useRouteError();
-  console.log(error);
 
-  return <h4 className='font-bold text-4xl'>there was an error... </h4>;
-};
-export default ErrorElement;
-```
-
-App.jsx
-
-```js
-import { ErrorElement } from './components';
-// loaders
-import { loader as landingLoader } from './pages/Landing';
-// actions
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-        loader: landingLoader,
-        errorElement: ErrorElement,
-      },
-    ],
-  },
-]);
-```
-
-Landing.js
-
-```js
-import { Hero } from '../components';
-
-import { customFetch } from '../utils';
-const url = '/products?featured=true';
-
-export const loader = async () => {
-  const response = await customFetch(url);
-  console.log(response);
-  const products = response.data.data;
-  return { products };
-};
-
-const Landing = () => {
-  return (
-    <>
-      <Hero />
-    </>
-  );
-};
-export default Landing;
-```
-
-## Challenge (20) - Featured Products
-
+## (20) - Featured Products
 - create FeaturedProducts, SectionTitle and ProductsGrid components
 - render SectionTitle and ProductsGrid in FeaturedProducts
 - setup SectionTitle
@@ -1326,98 +737,20 @@ export default Landing;
 5. Export ProductsGrid Component:
    - Export the `ProductsGrid` component as the default export of the module.
 
-## Solution (20) - Featured Products
 
-SectionTitle.jsx
 
-```js
-const SectionTitle = ({ text }) => {
-  return (
-    <div className='border-b border-base-300 pb-5'>
-      <h2 className='text-3xl font-medium tracking-wider capitalize'>{text}</h2>
-    </div>
-  );
-};
-export default SectionTitle;
-```
 
-FeaturedProducts.jsx
 
-```js
-import ProductsGrid from './ProductsGrid';
-import SectionTitle from './SectionTitle';
-const FeaturedProducts = () => {
-  return (
-    <div className='pt-24 '>
-      <SectionTitle text='featured products' />
-      <ProductsGrid />
-    </div>
-  );
-};
-export default FeaturedProducts;
-```
-
-ProductsGrid.jsx
-
-```js
-import { Link, useLoaderData } from 'react-router-dom';
-const ProductsGrid = () => {
-  const { products } = useLoaderData();
-
-  return (
-    <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 '>
-      {products.map((product) => {
-        const { title, price, image } = product.attributes;
-        const dollarsAmount = price;
-        return (
-          <Link
-            key={product.id}
-            to={`/products/${product.id}`}
-            className='card w-full  shadow-xl hover:shadow-2xl transition duration-300 '
-          >
-            <figure className='px-4 pt-4'>
-              <img
-                src={image}
-                alt={title}
-                className='rounded-xl h-64 md:h-48 w-full object-cover'
-              />
-            </figure>
-            <div className='card-body items-center text-center'>
-              <h2 className='card-title capitalize tracking-wider'>{title}</h2>
-              <span className='text-secondary'>{dollarsAmount}</span>
-            </div>
-          </Link>
-        );
-      })}
-    </div>
-  );
-};
-export default ProductsGrid;
-```
-
-## Challenge (21) - Format Price
-
+## (21) - Format Price
 - payment providers need in smallest unit
   - in this case cents
 - in utils setup a function to format price
 - utilize in ProductsGrid
 
-## Solution (21) - Format Price
 
-- utils/index.js
 
-```js
-export const formatPrice = (price) => {
-  const dollarsAmount = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format((price / 100).toFixed(2));
-  return dollarsAmount;
-};
-```
 
-## Challenge (22) - Single Product
-
+## (22) - Single Product
 - complete in multiple steps
 - fetch and render single product
 - don't forget about the colors and amount options
@@ -1485,145 +818,10 @@ export const formatPrice = (price) => {
 12. Export SingleProduct Component:
     - Export the `SingleProduct` component as the default export of the module.
 
-## Solution (22) - Single Product
 
-- import and setup loader in the App.jsx
 
-```js
-import { useLoaderData } from 'react-router-dom';
-import { formatPrice, customFetch } from '../utils';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
-export const loader = async ({ params }) => {
-  const response = await customFetch(`/products/${params.id}`);
-  return { product: response.data.data };
-};
-
-const SingleProduct = () => {
-  const { product } = useLoaderData();
-  const { image, title, price, description, colors, company } =
-    product.attributes;
-  const dollarsAmount = formatPrice(price);
-  const [productColor, setProductColor] = useState(colors[0]);
-  const [amount, setAmount] = useState(1);
-
-  const handleAmount = (e) => {
-    setAmount(parseInt(e.target.value));
-  };
-
-  return (
-    <section>
-      <div className='text-md breadcrumbs'>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/products'>Products</Link>
-          </li>
-        </ul>
-      </div>
-      {/* PRODUCT */}
-      <div className='mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16'>
-        {/* IMAGE */}
-        <img
-          src={image}
-          alt={title}
-          className='w-96 h-96 object-cover rounded-lg lg:w-full  '
-        />
-        {/* PRODUCT INFO */}
-        <div>
-          <h1 className='capitalize text-3xl font-bold'>{title}</h1>
-          <h4 className='text-xl text-neutral-content font-bold mt-2'>
-            {company}
-          </h4>
-
-          <p className='mt-3 text-xl'>{dollarsAmount}</p>
-
-          <p className='mt-6 leading-8'>{description}</p>
-
-          {/* COLORS */}
-          <div className='mt-6'>
-            <h4 className='text-md font-medium tracking-wider capitalize'>
-              colors
-            </h4>
-            <div className='mt-2'>
-              {colors.map((color) => {
-                return (
-                  <button
-                    key={color}
-                    type='button'
-                    className={`badge  w-6 h-6 mr-2  ${
-                      color === productColor && 'border-2 border-secondary'
-                    }`}
-                    style={{ backgroundColor: color }}
-                    onClick={() => setProductColor(color)}
-                  ></button>
-                );
-              })}
-            </div>
-          </div>
-          {/* AMOUNT */}
-          <div className='form-control w-full max-w-xs'>
-            <label className='label'>
-              <h4 className='text-md font-medium tracking-wider capitalize'>
-                amount
-              </h4>
-            </label>
-            <select
-              className='select select-secondary select-bordered select-md'
-              value={amount}
-              onChange={handleAmount}
-            >
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-            </select>
-          </div>
-          {/* CART BUTTON */}
-          <div className='mt-10 '>
-            <button
-              className='btn btn-secondary btn-md'
-              onClick={() => console.log('add to bag')}
-            >
-              Add to bag
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-export default SingleProduct;
-```
-
-<!-- EXTRA CREDIT -->
-
-- rename to index.jsx
-
-index.jsx
-
-```js
-export const generateAmountOptions = (number) => {
-  return Array.from({ length: number }, (_, index) => {
-    const amount = index + 1;
-
-    return (
-      <option key={amount} value={amount}>
-        {amount}
-      </option>
-    );
-  });
-};
-```
-
-Array.from({ length: number }, (_, index) => { ... }): This part uses the Array.from method to create an array of a specific length, determined by the number parameter. The second argument of the Array.from method is a callback function that will be invoked for each element in the array. The underscore (_) is a placeholder for the current element (which we don't need in this case), and index is the index of the current element.
-
-const amount = index + 1;: Inside the callback function, this line calculates the amount value based on the index. Since the index starts from 0 but you want amount to start from 1, you add 1 to the index.
-
-## Challenge (23) - Products Page (Setup)
-
+## (23) - Products Page (Setup)
 - create following components and render in products page
   - Filters
   - ProductsContainer
@@ -1667,39 +865,10 @@ const amount = index + 1;: Inside the callback function, this line calculates th
 8. Export Products Component:
    - Export the `Products` component as the default export of the module.
 
-## Solution (23) - Products Page (Setup)
 
-- import and setup loader in app.jsx
 
-Products.jsx
 
-```js
-import { Filters, PaginationContainer, ProductsContainer } from '../components';
-import { customFetch } from '../utils';
-
-const url = '/products';
-export const loader = async ({ request }) => {
-  const response = await customFetch(url);
-
-  const products = response.data.data;
-  const meta = response.data.meta;
-  return { products, meta };
-};
-
-const Products = () => {
-  return (
-    <>
-      <Filters />
-      <ProductsContainer />
-      <PaginationContainer />
-    </>
-  );
-};
-export default Products;
-```
-
-## Challenge (24) - Products Container
-
+## (24) - Products Container
 - create ProductsList and render products in one column
 - setup header (with total jobs and toggle buttons)
 - toggle between ProductsGrid and ProductsList
@@ -1796,179 +965,17 @@ export default Products;
 8. Export ProductsContainer Component:
    - Export the `ProductsContainer` component as the default export of the module.
 
-## Solution (24) - Products Container
 
-ProductsList.jsx
 
-```js
-import { formatPrice } from '../utils';
-import { Link, useLoaderData } from 'react-router-dom';
 
-const ProductList = () => {
-  const { products } = useLoaderData();
-  return (
-    <div className='mt-12 grid gap-y-8'>
-      {products.map((product) => {
-        const { title, price, image, company } = product.attributes;
-        const dollarsAmount = formatPrice(price);
-
-        return (
-          <Link
-            key={product.id}
-            to={`/products/${product.id}`}
-            className='p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap bg-base-100 shadow-xl hover:shadow-2xl duration-300 group'
-          >
-            <img
-              src={image}
-              alt={title}
-              className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300'
-            />
-            <div className='ml-0 sm:ml-16'>
-              <h3 className='capitalize font-medium text-lg'>{title}</h3>
-              <h4 className='capitalize text-md text-neutral-content'>
-                {company}
-              </h4>
-
-              {/* COLOR */}
-            </div>
-
-            <p className='font-medium ml-0 sm:ml-auto text-lg'>
-              {dollarsAmount}
-            </p>
-          </Link>
-        );
-      })}
-    </div>
-  );
-};
-
-export default ProductList;
-```
-
-ProductsContainer.jsx
-
-```js
-import { useLoaderData } from 'react-router-dom';
-import ProductsGrid from './ProductsGrid';
-import ProductsList from './ProductsList';
-import { useState } from 'react';
-import { BsFillGridFill, BsList } from 'react-icons/bs';
-
-const ProductsContainer = () => {
-  const { meta } = useLoaderData();
-  const totalProducts = meta.pagination.total;
-  const [layout, setLayout] = useState('grid');
-
-  const setActiveStyles = (pattern) => {
-    return `text-xl btn btn-circle btn-sm ${
-      pattern === layout
-        ? 'btn-primary text-primary-content'
-        : 'btn-ghost text-base-content'
-    }`;
-  };
-
-  return (
-    <>
-      {/* HEADER */}
-      <div className='flex justify-between items-center mt-8 border-b border-base-300 pb-5'>
-        <h4 className='font-medium text-md'>
-          {totalProducts} product{totalProducts > 1 && 's'}
-        </h4>
-        <div className='flex gap-x-2'>
-          <button
-            onClick={() => setLayout('grid')}
-            className={setActiveStyles('grid')}
-          >
-            <BsFillGridFill />
-          </button>
-
-          <button
-            onClick={() => setLayout('list')}
-            className={setActiveStyles('list')}
-          >
-            <BsList />
-          </button>
-        </div>
-      </div>
-
-      {/* PRODUCTS */}
-      <div>
-        {totalProducts === 0 ? (
-          <h5 className='text-2xl mt-16'>
-            Sorry, no products matched your search...
-          </h5>
-        ) : layout === 'grid' ? (
-          <ProductsGrid />
-        ) : (
-          <ProductsList />
-        )}
-      </div>
-    </>
-  );
-};
-
-export default ProductsContainer;
-```
-
-## Challenge (25) - Filters (Search Input)
-
+## (25) - Filters (Search Input)
 - add size to prop FormInput.jsx
 - render search input, submit button and reset button
 
-## Solution (25) - Filters (Search Input)
 
-FormInput.jsx
 
-```js
-const FormInput = ({ label, name, type, defaultValue, size }) => {
-  return (
-    <div className='form-control'>
-      <label htmlFor={name} className='label'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <input
-        type={type}
-        name={name}
-        defaultValue={defaultValue}
-        className={`input input-bordered ${size}`}
-      />
-    </div>
-  );
-};
-export default FormInput;
-```
 
-Filters.jsx
-
-```js
-import { Form, useLoaderData, Link } from 'react-router-dom';
-import FormInput from './FormInput';
-
-const Filters = () => {
-  return (
-    <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
-      {/* SEARCH */}
-      <FormInput
-        type='search'
-        label='search product'
-        name='search'
-        size='input-sm'
-      />
-      {/* BUTTONS */}
-      <button type='submit' className='btn btn-primary btn-sm '>
-        search
-      </button>
-      <Link to='/products' className='btn btn-accent btn-sm'>
-        reset
-      </Link>
-    </Form>
-  );
-};
-export default Filters;
-```
-
-## Challenge (26) - Filters (Select Input)
-
+## (26) - Filters (Select Input)
 - setup input for select input
 - render for categories, companies and order
 - companies and categories values are located in meta
@@ -2007,73 +1014,10 @@ export default Filters;
 7. Export FormSelect Component:
    - Export the `FormSelect` component as the default export of the module.
 
-## Solution (26) - Filters (Select Input)
 
-FormSelect.jsx
 
-```js
-const FormSelect = ({ label, name, list, defaultValue, size }) => {
-  return (
-    <div className='form-control'>
-      <label htmlFor={name} className='label'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <select
-        name={name}
-        id={name}
-        className={`select select-bordered ${size}`}
-        defaultValue={defaultValue}
-      >
-        {list.map((item) => {
-          return (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
-    </div>
-  );
-};
-export default FormSelect;
-```
 
-Filters.jsx
-
-```js
-const { meta } = useLoaderData();
-
-{
-  /* CATEGORIES */
-}
-<FormSelect
-  label='select category'
-  name='category'
-  list={meta.categories}
-  size='select-sm'
-/>;
-{
-  /* COMPANIES */
-}
-<FormSelect
-  label='select company'
-  name='company'
-  list={meta.companies}
-  size='select-sm'
-/>;
-{
-  /* ORDER */
-}
-<FormSelect
-  label='sort by'
-  name='order'
-  list={['a-z', 'z-a', 'high', 'low']}
-  size='select-sm'
-/>;
-```
-
-## Challenge (27) - Filters (Price)
-
+## (27) - Filters (Price)
 - create range input (hint: you will need local state)
 
 ### FormRange.jsx
@@ -2115,55 +1059,10 @@ const { meta } = useLoaderData();
 8. Export FormRange Component:
    - Export the `FormRange` component as the default export of the module.
 
-## Solution (27) - Filters (Price )
 
-FormRange.jsx
 
-```js
-import { formatPrice } from '../utils';
-import { useState } from 'react';
-const FormRange = ({ label, name, size }) => {
-  const step = 1000;
-  const maxPrice = 100000;
-  const [selectedPrice, setSelectedPrice] = useState(maxPrice);
 
-  return (
-    <div className='form-control'>
-      <label htmlFor={name} className='label cursor-pointer'>
-        <span className='label-text capitalize'>{label}</span>
-        <span>{formatPrice(selectedPrice)}</span>
-      </label>
-      <input
-        type='range'
-        name={name}
-        min={0}
-        max={maxPrice}
-        value={selectedPrice}
-        onChange={(e) => setSelectedPrice(e.target.value)}
-        className={`range range-primary ${size}`}
-        step={step}
-      />
-      <div className='w-full flex justify-between text-xs px-2 mt-2'>
-        <span className='font-bold text-md'>0</span>
-        <span className='font-bold text-md'>Max : {formatPrice(maxPrice)}</span>
-      </div>
-    </div>
-  );
-};
-export default FormRange;
-```
-
-Filters.jsx
-
-```js
-{
-  /* PRICE */
-}
-<FormRange label='select price' name='price' size='range-sm' />;
-```
-
-## Challenge (28) - Filters (Shipping)
-
+## (28) - Filters (Shipping)
 - create checkbox input
 
 ### FormCheckbox.jsx
@@ -2199,40 +1098,10 @@ Filters.jsx
 7. Export FormCheckbox Component:
    - Export the `FormCheckbox` component as the default export of the module.
 
-## Solution (28) - Filters (Shipping)
 
-FormCheckbox.jsx
 
-```js
-const FormCheckbox = ({ label, name, defaultValue, size }) => {
-  return (
-    <div className='form-control items-center'>
-      <label htmlFor={name} className='label cursor-pointer'>
-        <span className='label-text capitalize'>{label}</span>
-      </label>
-      <input
-        type='checkbox'
-        name={name}
-        defaultChecked={defaultValue}
-        className={`checkbox checkbox-primary ${size}`}
-      />
-    </div>
-  );
-};
-export default FormCheckbox;
-```
 
-Filters.jsx
-
-```js
-{
-  /* SHIPPING */
-}
-<FormCheckbox label='free shipping' name='shipping' size='checkbox-sm' />;
-```
-
-## Challenge (29) - Global Loading
-
+## (29) - Global Loading
 - create loading component
 - check for loading state in HomeLayout
 - toggle between loading and <Outlet>
@@ -2296,46 +1165,10 @@ Filters.jsx
 8. Export HomeLayout Component:
    - Export the "HomeLayout" component as the default export of the module.
 
-## Solution (29) - Global Loading
 
-Loading.jsx
 
-```js
-const Loading = () => {
-  return (
-    <div className='h-screen flex items-center justify-center'>
-      <span className='loading loading-ring loading-lg' />
-    </div>
-  );
-};
-export default Loading;
-```
 
-```js
-import { Outlet, useNavigation } from 'react-router-dom';
-import { Navbar, Loading, Header } from '../components';
-const HomeLayout = () => {
-  const navigation = useNavigation();
-  const isPageLoading = navigation.state === 'loading';
-  return (
-    <>
-      <Header />
-      <Navbar />
-      {isPageLoading ? (
-        <Loading />
-      ) : (
-        <section className='align-element py-20'>
-          <Outlet />
-        </section>
-      )}
-    </>
-  );
-};
-export default HomeLayout;
-```
-
-## Challenge (30) - Setup Params
-
+## (30) - Setup Params
 - explore how to filter products
   [API DOCS](https://documenter.getpostman.com/view/18152321/2s9Xy5KpTi#80a47ff5-cc24-494b-89e0-02cd92acc226)
 - test in Thunder Client
@@ -2345,111 +1178,10 @@ export default HomeLayout;
 - use params as default values (price in FormRange)
 - setup reset button
 
-## Solution (30) - Setup Params
 
-Products.jsx
 
-```js
-export const loader = async ({ request }) => {
-  const params = Object.fromEntries([
-    ...new URL(request.url).searchParams.entries(),
-  ]);
-  const response = await customFetch(url, { params });
 
-  const products = response.data.data;
-  const meta = response.data.meta;
-
-  return { products, meta, params };
-};
-```
-
-Filters.jsx
-
-```js
-import { Form, useLoaderData, Link } from 'react-router-dom';
-import FormInput from './FormInput';
-import FormSelect from './FormSelect';
-import FormRange from './FormRange';
-import FormCheckbox from './FormCheckbox';
-const Filters = () => {
-  const { meta, params } = useLoaderData();
-  const { search, company, category, shipping, order, price } = params;
-  return (
-    <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
-      {/* SEARCH */}
-      <FormInput
-        type='search'
-        label='search product'
-        name='search'
-        defaultValue={search}
-        size='input-sm'
-      />
-      {/* CATEGORIES */}
-      <FormSelect
-        label='select category'
-        name='category'
-        list={meta.categories}
-        defaultValue={category}
-        size='select-sm'
-      />
-      {/* COMPANIES */}
-      <FormSelect
-        label='select company'
-        name='company'
-        list={meta.companies}
-        defaultValue={company}
-        size='select-sm'
-      />
-      {/* ORDER */}
-      <FormSelect
-        label='sort by'
-        name='order'
-        list={['a-z', 'z-a', 'high', 'low']}
-        defaultValue={order}
-        size='select-sm'
-      />
-      {/* PRICE */}
-      <FormRange
-        label='select price'
-        name='price'
-        price={price}
-        size='range-sm'
-      />
-      {/* SHIPPING */}
-      <FormCheckbox
-        label='free shipping'
-        name='shipping'
-        defaultValue={shipping}
-        size='checkbox-sm'
-      />
-      {/* BUTTONS */}
-      <button type='submit' className='btn btn-primary btn-sm'>
-        search
-      </button>
-      <Link to='/products' className='btn btn-accent btn-sm'>
-        reset
-      </Link>
-    </Form>
-  );
-};
-export default Filters;
-```
-
-```js
-const params = Object.fromEntries([
-  ...new URL(request.url).searchParams.entries(),
-]);
-```
-
-It takes a URL string from the request.url property.
-It creates a URL object from that URL string.
-It extracts the query parameters using the searchParams property.
-It converts the query parameters into an iterable of key-value pairs using the entries() method.
-It spreads these key-value pairs into an array.
-It uses Object.fromEntries() to create a new object where the key-value pairs become properties of the object.
-
-## Challenge (31) - Pagination
-
+## (31) - Pagination
 - explore how to paginate
 - test in Thunder Client
 - access meta
@@ -2508,75 +1240,10 @@ It uses Object.fromEntries() to create a new object where the key-value pairs be
 
 - Export the `PaginationContainer` component.
 
-## Solution (31) - Pagination
 
-PaginationContainer.jsx
 
-```js
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 
-const PaginationContainer = () => {
-  const { meta } = useLoaderData();
-  const { pageCount, page } = meta.pagination;
-  const pages = Array.from({ length: pageCount }, (_, index) => {
-    return index + 1;
-  });
-  const { search, pathname } = useLocation();
-  const navigate = useNavigate();
-
-  const handlePageChange = (pageNumber) => {
-    const searchParams = new URLSearchParams(search);
-    searchParams.set('page', pageNumber);
-    navigate(`${pathname}?${searchParams.toString()}`);
-  };
-
-  if (pageCount < 2) return null;
-
-  return (
-    <div className='mt-16 flex justify-end'>
-      <div className='join'>
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let prevPage = page - 1;
-            if (prevPage < 1) prevPage = pageCount;
-            handlePageChange(prevPage);
-          }}
-        >
-          Prev
-        </button>
-        {pages.map((pageNumber) => {
-          return (
-            <button
-              onClick={() => handlePageChange(pageNumber)}
-              key={pageNumber}
-              className={`btn btn-xs sm:btn-md border-none join-item ${
-                pageNumber === page ? 'bg-base-300 border-base-300' : ''
-              }`}
-            >
-              {pageNumber}
-            </button>
-          );
-        })}
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let nextPage = page + 1;
-            if (nextPage > pageCount) nextPage = 1;
-            handlePageChange(nextPage);
-          }}
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  );
-};
-export default PaginationContainer;
-```
-
-## Challenge (32) - Setup RTK and react-toastify
-
+## (32) - Setup RTK and react-toastify
 - create features/cart/cartSlice.js
 - setup default state (README) and reducers
 - export actions and cartSlice.reducer
@@ -2624,120 +1291,17 @@ export default PaginationContainer;
 
 - Export the reducer generated by `cartSlice` for usage in the Redux store.
 
-## Solution (32) - Setup RTK and react-toastify
 
-features/cart/cartSlice.js
 
-```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
-const defaultState = {
-  cartItems: [],
-  numItemsInCart: 0,
-  cartTotal: 0,
-  shipping: 500,
-  tax: 0,
-  orderTotal: 0,
-};
-
-const cartSlice = createSlice({
-  name: 'cart',
-  initialState: defaultState,
-  reducers: {
-    addItem: (state, action) => {
-      console.log(action.payload);
-    },
-    clearCart: (state) => {},
-
-    removeItem: (state, action) => {},
-    editItem: (state, action) => {},
-  },
-});
-
-export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
-
-export default cartSlice.reducer;
-```
-
-store.js
-
-```js
-import { configureStore } from '@reduxjs/toolkit';
-
-import cartReducer from './features/cart/cartSlice';
-export const store = configureStore({
-  reducer: {
-    cartState: cartReducer,
-  },
-});
-```
-
-main.jsx
-
-```js
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import 'react-toastify/dist/ReactToastify.css';
-// order
-import './index.css';
-
-import { ToastContainer } from 'react-toastify';
-import { store } from './store';
-import { Provider } from 'react-redux';
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <App />
-    <ToastContainer position='top-center' />
-  </Provider>
-);
-```
-
-## Challenge (33) - Add Product (SingleProductPage)
-
+## (33) - Add Product (SingleProductPage)
 - import and dispatch addItem action
 - add item to cart in SingleProduct page
 
-## Solution (33) - Add Product (SingleProductPage)
 
-SingleProduct.jsx
 
-```js
-import { useDispatch } from 'react-redux';
-import { addItem } from '../features/cart/cartSlice';
-const SingleProduct = () => {
-  const dispatch = useDispatch();
-  const cartProduct = {
-    cartID: product.id + productColor,
-    productID: product.id,
-    image,
-    title,
-    price,
-    amount,
-    productColor,
-    company,
-  };
 
-  const addToCart = () => {
-    dispatch(addItem({ product: cartProduct }));
-  };
-  return (
-    <section>
-      ....
-      {/* CART BUTTON */}
-      <div className='mt-10 '>
-        <button className='btn btn-secondary btn-md' onClick={addToCart}>
-          Add to bag
-        </button>
-      </div>
-    </section>
-  );
-};
-```
-
-## Challenge (34) - AddItem Reducer
-
+## (34) - AddItem Reducer
 - display cartItems in Navbar
 - setup addItem functionality
 
@@ -2780,41 +1344,10 @@ const SingleProduct = () => {
 
 - Use the `toast.success` method to display a success message: 'Item added to cart'.
 
-## Solution (34) - AddItem Reducer
 
-Navbar.jsx
 
-```js
-import { useSelector } from 'react-redux';
-const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
-```
 
-cartSlice.js
-
-```js
-{
-    addItem: (state, action) => {
-      const { product } = action.payload;
-
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
-      if (item) {
-        item.amount += product.amount;
-      } else {
-        state.cartItems.push(product);
-      }
-      state.numItemsInCart += product.amount;
-      state.cartTotal += product.price * product.amount;
-      state.tax = 0.1 * state.cartTotal;
-      state.orderTotal = state.cartTotal + state.shipping + state.tax;
-      localStorage.setItem('cart', JSON.stringify(state));
-      toast.success('Item added to cart');
-    },
-}
-
-```
-
-## Challenge (35) - Refactor and Setup Local Storage
-
+## (35) - Refactor and Setup Local Storage
 - refactor addItem and get default state from local storage
 
 ### calculateTotals Reducer:
@@ -2832,63 +1365,10 @@ cartSlice.js
 
 - Convert the current state to a JSON string and save it in the browser's local storage under the key 'cart'.
 
-## Solution (35) - Refactor and Setup Local Storage
 
-```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
-const defaultState = {
-  cartItems: [],
-  numItemsInCart: 0,
-  cartTotal: 0,
-  shipping: 500,
-  tax: 0,
-  orderTotal: 0,
-};
 
-const getCartFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('cart')) || defaultState;
-};
-
-const cartSlice = createSlice({
-  name: 'cart',
-  initialState: getCartFromLocalStorage(),
-  reducers: {
-    addItem: (state, action) => {
-      const { product } = action.payload;
-
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
-      if (item) {
-        item.amount += product.amount;
-      } else {
-        state.cartItems.push(product);
-      }
-      state.numItemsInCart += product.amount;
-      state.cartTotal += product.price * product.amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.success('item added to cart');
-    },
-    clearCart: (state) => {},
-
-    removeItem: (state, action) => {},
-    editItem: (state, action) => {},
-
-    calculateTotals: (state) => {
-      state.tax = 0.1 * state.cartTotal;
-      state.orderTotal = state.cartTotal + state.shipping + state.tax;
-      localStorage.setItem('cart', JSON.stringify(state));
-    },
-  },
-});
-
-export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
-
-export default cartSlice.reducer;
-```
-
-## Challenge (36) - Clear Cart, Remove Item and Edit Item
-
+## (36) - Clear Cart, Remove Item and Edit Item
 - try to setup reducers for clear cart, remove item and edit item
 
 ## Building the Reducers
@@ -2960,99 +1440,10 @@ export default cartSlice.reducer;
 
 - Use the `toast.success` method to display a message: 'Cart updated'.
 
-## Solution (36) - Clear Cart, Remove Item and Edit Item
 
-```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
-const defaultState = {
-  cartItems: [],
-  numItemsInCart: 0,
-  cartTotal: 0,
-  shipping: 500,
-  tax: 0,
-  orderTotal: 0,
-};
 
-const getCartFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('cart')) || defaultState;
-};
-
-const cartSlice = createSlice({
-  name: 'cart',
-  initialState: getCartFromLocalStorage(),
-  reducers: {
-    addItem: (state, action) => {
-      const { product } = action.payload;
-
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
-      if (item) {
-        item.amount += product.amount;
-      } else {
-        state.cartItems.push(product);
-      }
-      state.numItemsInCart += product.amount;
-      state.cartTotal += product.price * product.amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.success('item added to cart');
-    },
-    clearCart: (state) => {
-      localStorage.setItem('cart', JSON.stringify(defaultState));
-      return defaultState;
-    },
-
-    removeItem: (state, action) => {
-      const { cartID } = action.payload;
-      const product = state.cartItems.find((i) => i.cartID === cartID);
-      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
-
-      state.numItemsInCart -= product.amount;
-      state.cartTotal -= product.price * product.amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.error('Item removed from cart');
-    },
-    editItem: (state, action) => {
-      const { cartID, amount } = action.payload;
-      const item = state.cartItems.find((i) => i.cartID === cartID);
-      state.numItemsInCart += amount - item.amount;
-      state.cartTotal += item.price * (amount - item.amount);
-      item.amount = amount;
-      cartSlice.caseReducers.calculateTotals(state);
-      toast.success('Cart updated');
-    },
-
-    calculateTotals: (state) => {
-      state.tax = 0.1 * state.cartTotal;
-      state.orderTotal = state.cartTotal + state.shipping + state.tax;
-      localStorage.setItem('cart', JSON.stringify(state));
-    },
-  },
-});
-
-export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
-
-export default cartSlice.reducer;
-```
-
-```js
-state.numItemsInCart += amount - item.amount;
-```
-
-The logic here is to update the total number of items in the cart (state.numItemsInCart) by adjusting it based on the difference between the provided amount and the existing quantity of that item (item.amount). If amount is greater than item.amount, it means that items are being added to the cart. If amount is less than item.amount, it means that items are being removed from the cart. If they are equal, it implies no change to the quantity of that item in the cart.
-
-The result of the subtraction (amount - item.amount) is then added to the current state.numItemsInCart to reflect the new total number of items in the cart.
-
-```js
-state.cartTotal += item.price * (amount - item.amount);
-```
-
-In this line, the logic is calculating the change in the total cost of the cart (state.cartTotal) based on the price of the item (item.price) and the change in the quantity of that item (amount - item.amount). This calculation is then added to the current state.cartTotal.
-
-If amount is greater than item.amount, it means more items are being added, so the cost of those additional items (difference between amount and item.amount) is calculated by multiplying it with the price of the item. If amount is less than item.amount, it means items are being removed, so the cost of those removed items is subtracted from the state.cartTotal. If they are equal, there is no change in the cost related to that item.
-
-## Challenge (37) - Setup Cart Page
-
+## (37) - Setup Cart Page
 - create CartItemsList, CartTotals, CartItem components
 - export CartItemsList, CartTotals in components/index.js
 - setup two column layout in cart page
@@ -3098,50 +1489,10 @@ If amount is greater than item.amount, it means more items are being added, so t
 
    - Export the `Cart` component as the default export of the module.
 
-## Solution (37) - Setup Cart Page
 
-pages/Cart.jsx
 
-```js
-import { useSelector } from 'react-redux';
-import { CartItemsList, SectionTitle, CartTotals } from '../components';
-import { Link } from 'react-router-dom';
 
-const Cart = () => {
-  // temp
-  const user = null;
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
-  if (numItemsInCart === 0) {
-    return <SectionTitle text='Your cart is empty' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Shopping Cart' />
-      <div className='mt-8 grid gap-8  lg:grid-cols-12'>
-        <div className='lg:col-span-8'>
-          <CartItemsList />
-        </div>
-        <div className='lg:col-span-4 lg:pl-4'>
-          <CartTotals />
-          {user ? (
-            <Link to='/checkout' className='btn btn-primary btn-block mt-8'>
-              Proceed to checkout
-            </Link>
-          ) : (
-            <Link to='/login' className='btn btn-primary btn-block mt-8'>
-              please login
-            </Link>
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
-export default Cart;
-```
-
-## Challenge (38) - Cart Totals
-
+## (38) - Cart Totals
 - setup cart totals component
 
 ### CartTotals.jsx
@@ -3178,48 +1529,10 @@ export default Cart;
 
    - Export the `CartTotals` component as the default export of the module.
 
-## Solution (38) - Cart Totals
 
-```js
-import { useSelector } from 'react-redux';
-import { formatPrice } from '../utils';
-const CartTotals = () => {
-  const { cartTotal, shipping, tax, orderTotal } = useSelector(
-    (state) => state.cartState
-  );
 
-  return (
-    <div className='card bg-base-200'>
-      <div className='card-body'>
-        {/* SUBTOTAL */}
-        <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
-          <span>Subtotal</span>
-          <span className='font-medium'>{formatPrice(cartTotal)}</span>
-        </p>
-        {/* SHIPPING */}
-        <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
-          <span>Shipping</span>
-          <span className='font-medium'>{formatPrice(shipping)}</span>
-        </p>
-        {/* Tax */}
-        <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
-          <span>Tax</span>
-          <span className='font-medium'>{formatPrice(tax)}</span>
-        </p>
-        {/* Total */}
-        <p className='mt-4 flex justify-between text-sm  pb-2'>
-          <span className='font-bold'>Order Total</span>
-          <span className='font-bold'>{formatPrice(orderTotal)}</span>
-        </p>
-      </div>
-    </div>
-  );
-};
-export default CartTotals;
-```
 
-## Challenge (39) - Cart Items List
-
+## (39) - Cart Items List
 - iterate over cartItems and return CartItem
 - in CartItem display values and implement remove,edit functionality
 
@@ -3291,118 +1604,10 @@ export default CartTotals;
 
    - Export the `CartItem` component as the default export of the module.
 
-## Solution (39) - Cart Items List
 
-CartItemsList.jsx
 
-```js
-import { useSelector } from 'react-redux';
-import CartItem from './CartItem';
-const CartItemsList = () => {
-  const cartItems = useSelector((state) => state.cartState.cartItems);
 
-  return (
-    <div>
-      {cartItems.map((item) => {
-        return <CartItem key={item.cartID} cartItem={item} />;
-      })}
-    </div>
-  );
-};
-export default CartItemsList;
-```
-
-CartItem.jsx
-
-```js
-import { formatPrice, generateAmountOptions } from '../utils';
-import { removeItem, editItem } from '../features/cart/cartSlice';
-import { useDispatch } from 'react-redux';
-const CartItem = ({ cartItem }) => {
-  const dispatch = useDispatch();
-
-  const removeItemFromTheCart = () => {
-    dispatch(removeItem({ cartID }));
-  };
-  const handleAmount = (e) => {
-    dispatch(editItem({ cartID, amount: parseInt(e.target.value) }));
-  };
-
-  const { cartID, title, price, image, amount, company, productColor } =
-    cartItem;
-
-  return (
-    <article
-      key={cartID}
-      className='mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0'
-    >
-      {/* IMAGE */}
-      <img
-        src={image}
-        alt={title}
-        className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover'
-      />
-      {/* INFO */}
-      <div className='sm:ml-16 sm:w-48'>
-        {/* TITLE */}
-        <h3 className='capitalize font-medium'>{title}</h3>
-        {/* COMPANY */}
-        <h4 className='mt-2 capitalize text-sm text-neutral-content'>
-          {company}
-        </h4>
-        {/* COLOR */}
-        <p className='mt-4 text-sm capitalize flex items-center gap-x-2'>
-          color :
-          <span
-            className='badge badge-sm'
-            style={{ backgroundColor: productColor }}
-          ></span>
-        </p>
-      </div>
-      <div className='sm:ml-12'>
-        {/* AMOUNT */}
-        <div className='form-control max-w-xs'>
-          <label htmlFor='amount' className='label p-0'>
-            <span className='label-text'>Amount</span>
-          </label>
-          <select
-            name='amount'
-            id='amount'
-            className='mt-2 select select-base select-bordered select-xs'
-            value={amount}
-            onChange={handleAmount}
-          >
-            {generateAmountOptions(amount + 5)}
-          </select>
-        </div>
-        {/* REMOVE */}
-        <button
-          className='mt-2 link link-primary link-hover text-sm'
-          onClick={removeItemFromTheCart}
-        >
-          remove
-        </button>
-      </div>
-
-      {/* PRICE */}
-      <p className='font-medium sm:ml-auto'>{formatPrice(price)}</p>
-    </article>
-  );
-};
-export default CartItem;
-```
-
-CartItem.jsx
-
-```js
-<div className='sm:ml-12'>
-  {/* AMOUNT */}
-  {/* REMOVE */}
-</div>
-```
-
-## Challenge (40) - Setup User Slice
-
+## (40) - Setup User Slice
 - setup user slice
 - add to store
 
@@ -3443,284 +1648,23 @@ CartItem.jsx
     - `logoutUser`
     - `toggleTheme`
 
-## Solution (40) - Setup User Slice
 
-```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
-const initialState = {
-  user: { username: 'coding addict' },
-  theme: 'dracula',
-};
 
-const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    loginUser: (state, action) => {
-      console.log('login');
-    },
-    logoutUser: (state) => {
-      console.log('logout');
-    },
-    toggleTheme: (state) => {
-      console.log('toggle theme');
-    },
-  },
-});
-
-export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
-
-export default userSlice.reducer;
-```
-
-store.js
-
-```js
-import { configureStore } from '@reduxjs/toolkit';
-
-import cartReducer from './features/cart/cartSlice';
-import userReducer from './features/user/userSlice';
-
-export const store = configureStore({
-  reducer: {
-    cartState: cartReducer,
-    userState: userReducer,
-  },
-});
-```
-
-## Challenge (41) - Move Theme Logic
-
+## (41) - Move Theme Logic
 - move theme logic from Navbar to userSlice
 
-## Solution (41) - Move Theme Logic
 
-userSlice.js
 
-```js
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
-const themes = {
-  winter: 'winter',
-  dracula: 'dracula',
-};
-
-const getThemeFromLocalStorage = () => {
-  const theme = localStorage.getItem('theme') || themes.winter;
-  document.documentElement.setAttribute('data-theme', theme);
-  return theme;
-};
-
-const initialState = {
-  user: { username: 'coding addict' },
-  theme: getThemeFromLocalStorage(),
-};
-
-const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    loginUser: (state, action) => {
-      console.log('login');
-    },
-    logoutUser: (state) => {
-      console.log('logout');
-    },
-    toggleTheme: (state) => {
-      const { dracula, winter } = themes;
-      state.theme = state.theme === dracula ? winter : dracula;
-      document.documentElement.setAttribute('data-theme', state.theme);
-      localStorage.setItem('theme', state.theme);
-    },
-  },
-});
-
-export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
-
-export default userSlice.reducer;
-```
-
-Navbar.js
-
-```js
-import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
-import { FaBarsStaggered } from 'react-icons/fa6';
-import { NavLink } from 'react-router-dom';
-import NavLinks from './NavLinks';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../features/user/userSlice';
-
-const Navbar = () => {
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
-
-  const dispatch = useDispatch();
-  const handleTheme = () => {
-    dispatch(toggleTheme());
-  };
-  return (
-    <nav className='bg-base-200'>
-      <div className='navbar align-element '>
-        <div className='navbar-start'>
-          {/* Title */}
-          <NavLink
-            to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center '
-          >
-            C
-          </NavLink>
-          {/* DROPDOWN */}
-          <div className='dropdown'>
-            <label tabIndex={0} className='btn btn-ghost lg:hidden'>
-              <FaBarsStaggered className='h-6 w-6' />
-            </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
-              <NavLinks />
-            </ul>
-          </div>
-        </div>
-        <div className='navbar-center hidden lg:flex'>
-          <ul className='menu menu-horizontal '>
-            <NavLinks />
-          </ul>
-        </div>
-        <div className='navbar-end'>
-          {/* THEME ICONS */}
-          <label className='swap swap-rotate '>
-            {/* this hidden checkbox controls the state */}
-            <input type='checkbox' onChange={handleTheme} />
-
-            {/* sun icon */}
-            <BsSunFill className='swap-on h-4 w-4' />
-
-            {/* moon icon */}
-            <BsMoonFill className='swap-off h-4 w-4' />
-          </label>
-          {/* CART LINK*/}
-          <NavLink to='cart' className='btn btn-ghost btn-circle btn-md ml-4'>
-            <div className='indicator'>
-              <BsCart3 className='h-6 w-6' />
-              <span className='badge badge-sm badge-primary indicator-item'>
-                {numItemsInCart}
-              </span>
-            </div>
-          </NavLink>
-        </div>
-      </div>
-    </nav>
-  );
-};
-export default Navbar;
-```
-
-## Challenge (42) - Setup Logout and Access User
-
+## (42) - Setup Logout and Access User
 - setup logout reducer
 - access user in Header, NavLinks and Cart Page
 
-## Solution (42) - Setup Logout And Access User
 
-userSlice.js
 
-```js
-logoutUser: (state) => {
-      state.user = null;
-      // localStorage.clear()
-      localStorage.removeItem('user');
-      toast.success('Logged out successfully');
-    },
-```
 
-Header.js
-
-```js
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../features/user/userSlice';
-import { clearCart } from '../features/cart/cartSlice';
-const Header = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.userState.user);
-
-  const handleLogout = () => {
-    navigate('/');
-    dispatch(clearCart());
-    dispatch(logoutUser());
-  };
-  return (
-    <header className=' bg-neutral py-2 text-neutral-content '>
-      <div className='align-element flex justify-center sm:justify-end '>
-        {user ? (
-          <div className='flex gap-x-2 sm:gap-x-8 items-center'>
-            <p className='text-xs sm:text-sm'>Hello, {user.username}</p>
-            <button
-              className='btn btn-xs btn-outline btn-primary '
-              onClick={handleLogout}
-            >
-              logout
-            </button>
-          </div>
-        ) : (
-          <div className='flex gap-x-6 justify-center items-center'>
-            <Link to='/login' className='link link-hover text-xs sm:text-sm'>
-              Sign in / Guest
-            </Link>
-            <Link to='/register' className='link link-hover text-xs sm:text-sm'>
-              Create an Account
-            </Link>
-          </div>
-        )}
-      </div>
-    </header>
-  );
-};
-export default Header;
-```
-
-NavLinks.jsx
-
-```js
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-
-const NavLinks = () => {
-  const user = useSelector((state) => state.userState.user);
-
-  return (
-    <>
-      {links.map((link) => {
-        const { id, url, text } = link;
-        if ((url === 'checkout' || url === 'orders') && !user) return null;
-        return (
-          <li key={id}>
-            <NavLink className='capitalize' to={url}>
-              {text}
-            </NavLink>
-          </li>
-        );
-      })}
-    </>
-  );
-};
-export default NavLinks;
-```
-
-```js
-const Cart = () => {
-  // temp
-  const { user } = useSelector((state) => state.userState);
-};
-```
-
-## Challenge (43) - Register User
-
+## (43) - Register User
 - [API DOCS](https://documenter.getpostman.com/view/18152321/2s9Xy5KpTi)
 - docs - register request
 - test in Thunder Client
@@ -3754,100 +1698,19 @@ const Cart = () => {
   - Display the error message using `toast.error`.
   - Return `null` to indicate that an error occurred.
 
-## Solution (43) - Register User
 
-Register.jsx
 
-```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, redirect, Link } from 'react-router-dom';
 
-import { customFetch } from '../utils';
-import { toast } from 'react-toastify';
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  try {
-    const response = await customFetch.post('/auth/local/register', data);
-    toast.success('account created successfully');
-    return redirect('/login');
-  } catch (error) {
-    const errorMessage =
-      error?.response?.data?.error?.message ||
-      'please double check your credentials';
-
-    toast.error(errorMessage);
-    return null;
-  }
-};
-
-const Register = () => {
-  return (
-    <section className='h-screen grid place-items-center'>
-      <Form
-        method='POST'
-        className='card w-96 py-8 px-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
-        <h4 className='text-center text-3xl font-bold'>Register</h4>
-        <FormInput type='text' label='username' name='username' />
-        <FormInput type='email' label='email' name='email' />
-        <FormInput type='password' label='password' name='password' />
-        <div className='mt-4'>
-          <SubmitBtn text='register' />
-        </div>
-
-        <p className='text-center'>
-          Already a member?
-          <Link
-            to='/login'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
-            login
-          </Link>
-        </p>
-      </Form>
-    </section>
-  );
-};
-export default Register;
-```
-
-## Challenge (44) - Login Setup
-
+## (44) - Login Setup
 - [API DOCS](https://documenter.getpostman.com/view/18152321/2s9Xy5KpTi)
 - docs - login request
 - test in Thunder Client
 - setup action in login and access store
 
-## Solution (44) - Login Setup
 
-App.jsx
 
-```js
-import { action as loginAction } from './pages/Login';
 
-import { store } from './store';
-{
-    path: '/login',
-    element: <Login />,
-    errorElement: <Error />,
-    action: loginAction(store),
-  },
-```
-
-Login.jsx
-
-```js
-export const action =
-  (store) =>
-  async ({ request }) => {
-    console.log(store);
-    return store;
-  };
-```
-
-### Challenge (45) - Login User
-
+## (45) - Login User
 ### Login.jsx
 
 - Import Dependencies:
@@ -3879,70 +1742,10 @@ export const action =
   - Display the error message using `toast.error`.
   - Return `null` to indicate that an error occurred.
 
-### Solution (45) - Login User
 
-userSlice.js
 
-```js
-loginUser: (state, action) => {
-      console.log(action.payload);
-    },
-```
 
-Login.jsx
-
-```js
-import { FormInput, SubmitBtn } from '../components';
-import { Form, Link, redirect, useNavigate } from 'react-router-dom';
-import { customFetch } from '../utils';
-import { toast } from 'react-toastify';
-import { loginUser } from '../features/user/userSlice';
-import { useDispatch } from 'react-redux';
-
-export const action =
-  (store) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    try {
-      const response = await customFetch.post('/auth/local', data);
-
-      store.dispatch(loginUser(response.data));
-      toast.success('logged in successfully');
-      return redirect('/');
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'please double check your credentials';
-
-      toast.error(errorMessage);
-      return null;
-    }
-  };
-```
-
-userSlice.js
-
-```js
-const getUserFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('user')) || null;
-};
-
-const initialState = {
-  user: getUserFromLocalStorage(),
-  theme: getThemeFromLocalStorage(),
-};
-
-loginUser: (state, action) => {
-      const user = { ...action.payload.user, token: action.payload.jwt };
-      state.user = user;
-      localStorage.setItem('user', JSON.stringify(user));
-    },
-```
-
-## Challenge (46) - Demo User
-
+## (46) - Demo User
 - remove defaultValue from inputs
 
 ### loginAsGuestUser
@@ -3960,41 +1763,10 @@ loginUser: (state, action) => {
 - Inside the `catch` block, use `console.log` to log the error for debugging purposes.
 - Display an error message using the `toast.error` method to notify the user about the login error.
 
-## Solution (46) - Demo User
 
-Login.jsx
 
-```js
-const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const loginAsGuestUser = async () => {
-    try {
-      const response = await customFetch.post('/auth/local', {
-        identifier: 'test@test.com',
-        password: 'secret',
-      });
-      dispatch(loginUser(response.data));
-      toast.success('welcome guest user');
-      navigate('/');
-    } catch (error) {
-      console.log(error);
-      toast.error('guest user login error.please try later.');
-    }
-  };
-};
 
-<button
-  type='button'
-  className='btn btn-secondary btn-block'
-  onClick={loginAsGuestUser}
->
-  guest user
-</button>;
-```
-
-## Challenge (47) - Checkout Page Setup
-
+## (47) - Checkout Page Setup
 - create CheckoutForm component
 
 ### Checkout.jsx
@@ -4016,34 +1788,10 @@ const Login = () => {
 
 - Export the `Checkout` component as the default export.
 
-## Solution (47) - Checkout Page Setup
 
-Checkout.jsx
 
-```js
-import { useSelector } from 'react-redux';
-import { CheckoutForm, SectionTitle, CartTotals } from '../components';
 
-const Checkout = () => {
-  const cartItems = useSelector((state) => state.cartState.cartTotal);
-  if (cartTotal.length === 0) {
-    return <SectionTitle text='Your cart is empty' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Place your order' />
-      <div className='mt-8 grid gap-8  md:grid-cols-2 items-start'>
-        <CheckoutForm />
-        <CartTotals />
-      </div>
-    </>
-  );
-};
-export default Checkout;
-```
-
-## Challenge (48) - Restrict Access
-
+## (48) - Restrict Access
 App.jsx
 
 - in App.jsx import loader from Checkout page
@@ -4071,50 +1819,10 @@ App.jsx
 
 - Export the `loader` function.
 
-## Solution (48) - Restrict Access
 
-App.jsx
 
-```js
-import { loader as checkoutLoader } from './pages/Checkout';
 
-import { store } from './store';
-
-const router = createBrowserRouter([
-  {
-   ....
-      {
-        path: 'checkout',
-        element: <Checkout />,
-        loader: checkoutLoader(store),
-
-      },
-
-  },
-
-]);
-
-```
-
-Checkout.jsx
-
-```js
-import { redirect } from 'react-router-dom';
-import { toast } from 'react-toastify';
-
-export const loader = (store) => async () => {
-  const user = store.getState().userState.user;
-
-  if (!user) {
-    toast.warn('You must be logged in to checkout');
-    return redirect('/login');
-  }
-  return null;
-};
-```
-
-## Challenge (49) - CheckoutForm
-
+## (49) - CheckoutForm
 - [API DOCS](https://documenter.getpostman.com/view/18152321/2s9Xy5KpTi)
 - docs - create order request
 - test in Thunder Client
@@ -4162,130 +1870,26 @@ export const loader = (store) => async () => {
 
 - Export the `CheckoutForm` component.
 
-## Solution (49) - CheckoutForm
 
-App.jsx
 
-```js
-import { action as checkoutAction } from './components/CheckoutForm';
-import { store } from './store';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: 'checkout',
-        element: <Checkout />,
-        loader: checkoutLoader(store),
-        action: checkoutAction(store),
-      },
-    ],
-  },
-]);
-```
-
-CheckoutForm.jsx
-
-```js
-import { Form, redirect } from 'react-router-dom';
-import FormInput from './FormInput';
-import SubmitBtn from './SubmitBtn';
-import { customFetch, formatPrice } from '../utils';
-import { toast } from 'react-toastify';
-import { clearCart } from '../features/cart/cartSlice';
-
-export const action =
-  (store) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const { name, address } = Object.fromEntries(formData);
-    const user = store.getState().userState.user;
-    const { cartItems, orderTotal, numItemsInCart } =
-      store.getState().cartState;
-
-    const info = {
-      name,
-      address,
-      chargeTotal: orderTotal,
-      orderTotal: formatPrice(orderTotal),
-      cartItems,
-      numItemsInCart,
-    };
-    try {
-      const response = await customFetch.post(
-        '/orders',
-        { data: info },
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      store.dispatch(clearCart());
-      toast.success('order placed successfully');
-      return redirect('/orders');
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error placing your order';
-
-      toast.error(errorMessage);
-      return null;
-    }
-  };
-const CheckoutForm = () => {
-  return (
-    <Form method='POST' className='flex flex-col gap-y-4'>
-      <h4 className='font-medium text-xl'>Shipping Information</h4>
-      <FormInput label='first name' name='name' type='text' />
-      <FormInput label='address' name='address' type='text' />
-      <div className='mt-4'>
-        <SubmitBtn text='Place Your Order' />
-      </div>
-    </Form>
-  );
-};
-export default CheckoutForm;
-```
-
-## Challenge (50) - Auth Error
-
+## (50) - Auth Error
 - handle auth errors
 - check for response.status
   - if status === 401 redirect to login
 
-## Solution (50) - Auth Error
 
-CheckoutForm.jsx
 
-```js
 
- catch (error) {
-  console.log(error);
-  const errorMessage =
-    error?.response?.data?.error?.message ||
-    'there was an error placing your order';
-  toast.error(errorMessage);
-  if (error?.response?.status === 401 || 403) return redirect('/login');
-
-  return null;
-}
-```
-
-## Challenge (51) - Orders Request Overview
-
+## (51) - Orders Request Overview
 - [API DOCS](https://documenter.getpostman.com/view/18152321/2s9Xy5KpTi)
 - docs - orders request
 - test in Thunder Client
 
-## Solution (51) - Orders Request Overview
 
-## Challenge (52) - Orders Page Setup
 
+
+## (52) - Orders Page Setup
 - create components/OrdersList.jsx (export)
 - create loader (import/setup in App.jsx and provide store)
 - restrict access to page
@@ -4324,69 +1928,10 @@ CheckoutForm.jsx
 5. **Export Orders Component:**
    - Export the `Orders` component as the default export of the module.
 
-## Solution (52) - Orders Page Setup
 
-App.jsx
 
-```js
-import { loader as ordersLoader } from './pages/Orders';
 
-{
-  path: 'orders',
-  element: <Orders />,
-  loader: ordersLoader(store),
-},
-```
-
-Orders.jsx
-
-```js
-import { redirect, useLoaderData } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { customFetch } from '../utils';
-import { OrdersList, PaginationContainer, SectionTitle } from '../components';
-
-export const loader =
-  (store) =>
-  async ({ request }) => {
-    const user = store.getState().userState.user;
-
-    if (!user) {
-      toast.warn('You must be logged in to view orders');
-      return redirect('/login');
-    }
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    try {
-      const response = await customFetch.get('/orders', {
-        params,
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-
-      return { orders: response.data.data, meta: response.data.meta };
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error accessing your orders';
-
-      toast.error(errorMessage);
-      if (error?.response?.status === 401 || 403) return redirect('/login');
-
-      return null;
-    }
-  };
-const Orders = () => {
-  return <h1 className='text-3xl'>orders</h1>;
-};
-export default Orders;
-```
-
-## Challenge (53) - Render Orders
-
+## (53) - Render Orders
 ### Orders.jsx
 
 - Import Dependencies:
@@ -4440,82 +1985,10 @@ export default Orders;
 
 - Export the `OrdersList` component.
 
-## Solution (53) - Render Orders
 
-Orders.jsx
 
-```js
-const Orders = () => {
-  const { meta } = useLoaderData();
-  if (meta.pagination.total < 1) {
-    return <SectionTitle text='Please make an order' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Your Orders' />
-      <OrdersList />
-      <PaginationContainer />
-    </>
-  );
-};
-export default Orders;
-```
 
-OrdersList.jsx
-
-```js
-import { useLoaderData } from 'react-router-dom';
-import day from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-day.extend(advancedFormat);
-
-const OrdersList = () => {
-  const { orders, meta } = useLoaderData();
-  return (
-    <div className='mt-8'>
-      <h4 className='mb-4 capitalize'>
-        total orders : {meta.pagination.total}
-      </h4>
-      <div className='overflow-x-auto '>
-        <table className='table table-zebra'>
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Products</th>
-              <th>Cost</th>
-              <th className='hidden sm:block'>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => {
-              const id = order.id;
-              const { name, address, numItemsInCart, orderTotal, createdAt } =
-                order.attributes;
-
-              const date = day(createdAt).format('hh:mm a - MMM Do, YYYY ');
-              return (
-                <tr key={id}>
-                  <td>{name}</td>
-                  <td>{address}</td>
-                  <td>{numItemsInCart}</td>
-                  <td>{orderTotal}</td>
-                  <td className='hidden sm:block'>{date}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
-export default OrdersList;
-```
-
-## Challenge (54) - Complex Pagination
-
+## (54) - Complex Pagination
 - create ComplexPaginationContainer.jsx
 - render in Orders.jsx
 
@@ -4544,108 +2017,10 @@ export default OrdersList;
 
 - Export the `ComplexPaginationContainer` component.
 
-## Solution (54) - Complex Pagination
 
-ComplexPaginationContainer.jsx
 
-```js
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 
-const ComplexPaginationContainer = () => {
-  const { meta } = useLoaderData();
-  const { pageCount, page } = meta.pagination;
-
-  const { search, pathname } = useLocation();
-  const navigate = useNavigate();
-  const handlePageChange = (pageNumber) => {
-    const searchParams = new URLSearchParams(search);
-    searchParams.set('page', pageNumber);
-    navigate(`${pathname}?${searchParams.toString()}`);
-  };
-
-  const addPageButton = ({ pageNumber, activeClass }) => {
-    return (
-      <button
-        key={pageNumber}
-        onClick={() => handlePageChange(pageNumber)}
-        className={`btn btn-xs sm:btn-md border-none join-item ${
-          activeClass ? 'bg-base-300 border-base-300 ' : ''
-        }`}
-      >
-        {pageNumber}
-      </button>
-    );
-  };
-
-  const renderPageButtons = () => {
-    const pageButtons = [];
-    // first button
-    pageButtons.push(addPageButton({ pageNumber: 1, activeClass: page === 1 }));
-
-    // dots
-    if (page > 2) {
-      pageButtons.push(
-        <button className='join-item btn btn-xs sm:btn-md' key='dots-1'>
-          ...
-        </button>
-      );
-    }
-
-    // active/current page
-    if (page !== 1 && page !== pageCount) {
-      pageButtons.push(addPageButton({ pageNumber: page, activeClass: true }));
-    }
-    // dots
-    if (page < pageCount - 1) {
-      pageButtons.push(
-        <button className='join-item btn btn-xs sm:btn-md' key='dots-2'>
-          ...
-        </button>
-      );
-    }
-
-    // last button
-    pageButtons.push(
-      addPageButton({ pageNumber: pageCount, activeClass: page === pageCount })
-    );
-    return pageButtons;
-  };
-
-  if (pageCount < 2) return null;
-
-  return (
-    <div className='mt-16 flex justify-end'>
-      <div className='join'>
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let prevPage = page - 1;
-            if (prevPage < 1) prevPage = pageCount;
-            handlePageChange(prevPage);
-          }}
-        >
-          Prev
-        </button>
-        {renderPageButtons()}
-        <button
-          className='btn btn-xs sm:btn-md join-item'
-          onClick={() => {
-            let nextPage = page + 1;
-            if (nextPage > pageCount) nextPage = 1;
-            handlePageChange(nextPage);
-          }}
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  );
-};
-export default ComplexPaginationContainer;
-```
-
-## Challenge (55) - Setup React Query
-
+## (55) - Setup React Query
 - import and setup react query in App.jsx
 - pass query client down to
   - Landing Page
@@ -4653,320 +2028,33 @@ export default ComplexPaginationContainer;
   - Products Page
 - refactor loaders
 
-## Solution (55) - Setup React Query
 
-App.jsx
 
-```js
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5,
-    },
-  },
-});
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-        loader: landingLoader(queryClient),
-        errorElement: <ErrorElement />,
-      },
-      {
-        path: 'products',
-        element: <Products />,
-        loader: productsLoader(queryClient),
-        errorElement: <ErrorElement />,
-      },
-      {
-        path: 'products/:id',
-        element: <SingleProduct />,
-        loader: singleProductLoader(queryClient),
-        errorElement: <ErrorElement />,
-      },
-      {
-        path: 'checkout',
-        element: <Checkout />,
-        loader: checkoutLoader(store),
-        action: checkoutAction(store, queryClient),
-      },
-      {
-        path: 'orders',
-        element: <Orders />,
-        loader: ordersLoader(store, queryClient),
-      },
-    ],
-  },
-]);
-
-const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  );
-};
-export default App;
-```
-
-Landing.js
-
-```js
-export const loader = (queryClient) => async () => {
-  const response = await customFetch(url);
-  const products = response.data.data;
-  return { products };
-};
-```
-
-## Challenge (56) - Landing
-
+## (56) - Landing
 - setup react query and invoke in loader
 
-## Solution (56) - Landing
 
-Landing.jsx
 
-```js
-const featuredProductsQuery = {
-  queryKey: ['featuredProducts'],
-  queryFn: () => customFetch(url),
-};
 
-export const loader = (queryClient) => async () => {
-  const response = await queryClient.ensureQueryData(featuredProductsQuery);
-  const products = response.data.data;
-  return { products };
-};
-```
-
-## Challenge (57) - Single Product
-
+## (57) - Single Product
 - setup react query and invoke in loader
 
-## Solution (57) - Single Product
 
-SingleProduct.jsx
 
-```js
-const singleProductQuery = (id) => {
-  return {
-    queryKey: ['singleProduct', id],
-    queryFn: () => customFetch.get(`/products/${id}`),
-  };
-};
 
-export const loader =
-  (queryClient) =>
-  async ({ params }) => {
-    const response = await queryClient.ensureQueryData(
-      singleProductQuery(params.id)
-    );
-    return { product: response.data.data };
-  };
-```
-
-## Challenge (58) - All Products
-
+## (58) - All Products
 - setup react query and invoke in loader
 
-## Solution (58) - All Products
 
-Products.jsx
 
-```js
-const allProductsQuery = (queryParams) => {
-  const { search, category, company, sort, price, shipping, page } =
-    queryParams;
 
-  return {
-    queryKey: [
-      'products',
-      search ?? '',
-      category ?? 'all',
-      company ?? 'all',
-      sort ?? 'a-z',
-      price ?? 100000,
-      shipping ?? false,
-      page ?? 1,
-    ],
-    queryFn: () =>
-      customFetch(url, {
-        params: queryParams,
-      }),
-  };
-};
-
-export const loader =
-  (queryClient) =>
-  async ({ request }) => {
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    const response = await queryClient.ensureQueryData(
-      allProductsQuery(params)
-    );
-
-    const products = response.data.data;
-    const meta = response.data.meta;
-
-    return { products, meta, params };
-  };
-```
-
-?? === This operator is known as the nullish coalescing operator in JavaScript. It is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
-
-In simpler terms, the ?? operator is used to provide a default value for potentially null or undefined variables.
-
-## Challenge (59) - Orders
-
+## (59) - Orders
 setup react query and invoke in loader
 
-## Solution (59) - Orders
 
-```js
-import { redirect, useLoaderData } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { customFetch } from '../utils';
-import {
-  OrdersList,
-  ComplexPaginationContainer,
-  SectionTitle,
-} from '../components';
 
-export const ordersQuery = (params, user) => {
-  return {
-    queryKey: [
-      'orders',
-      user.username,
-      params.page ? parseInt(params.page) : 1,
-    ],
-    queryFn: () =>
-      customFetch.get('/orders', {
-        params,
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      }),
-  };
-};
 
-export const loader =
-  (store, queryClient) =>
-  async ({ request }) => {
-    const user = store.getState().userState.user;
-
-    if (!user) {
-      toast.warn('You must be logged in to view orders');
-      return redirect('/login');
-    }
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    try {
-      const response = await queryClient.ensureQueryData(
-        ordersQuery(params, user)
-      );
-
-      return {
-        orders: response.data.data,
-        meta: response.data.meta,
-      };
-    } catch (error) {
-      console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error accessing your orders';
-
-      toast.error(errorMessage);
-      if (error?.response?.status === 401 || 403) return redirect('/login');
-      return null;
-    }
-  };
-const Orders = () => {
-  const { meta } = useLoaderData();
-
-  if (meta.pagination.total < 1) {
-    return <SectionTitle text='Please make an order' />;
-  }
-  return (
-    <>
-      <SectionTitle text='Your Orders' />
-      <OrdersList />
-      <ComplexPaginationContainer />
-    </>
-  );
-};
-export default Orders;
-```
-
-## Challenge (60) - Remove Queries
-
+## (60) - Remove Queries
 - remove "orders" query in CheckoutForm and Header
 
-## Solution (60) - Remove Queries
-
-CheckoutForm.jsx
-
-```js
-import { Form, redirect } from 'react-router-dom';
-import FormInput from './FormInput';
-import SubmitBtn from './SubmitBtn';
-import { customFetch, formatPrice } from '../utils';
-import { toast } from 'react-toastify';
-import { clearCart } from '../features/cart/cartSlice';
-
-export const action =
-  (store, queryClient) =>
-  async ({ request }) => {
-    ...
-    try {
-      const response = await customFetch.post(
-        '/orders',
-        { data: info },
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      // remove query
-      queryClient.removeQueries(['orders']);
-      // rest of the code
-      store.dispatch(clearCart());
-      toast.success('order placed successfully');
-      return redirect('/orders');
-    } ...
-  };
-```
-
-Header.jsx
-
-```js
-
-import { useQueryClient } from '@tanstack/react-query';
-const Header = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.userState.user);
-  const queryClient = useQueryClient();
-  const handleLogout = async () => {
-    navigate('/');
-    dispatch(logoutUser());
-    dispatch(clearCart());
-    queryClient.removeQueries();
-  };
-  ...
-}
-
-```

@@ -12,7 +12,7 @@ const Hero = () => {
   return (
    <div className='grid lg:grid-cols-2 gap-24 items-center'>
         <div>
-            <h1 className='text-4xl font-bold max-w-2xl tracking-tight sm:text-6xl'>We are changing the style of shopping</h1>
+            <h1 className='text-4xl font-bold max-w-2xl tracking-tight sm:text-6xl'>Explore our range of exciting products.</h1>
             <p className='mt-8 max-w-xl text-lg leading-8'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis vitae, doloremque, hic sint a cupiditate labore incidunt et placeat ipsa consectetur fuga rem quo aperiam dolor nemo aspernatur. Ipsum, eos?</p>
             <div className="mt-10">
                 <Link to="/products" className='btn btn-primary'>Our products </Link>
